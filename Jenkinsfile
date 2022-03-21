@@ -7,6 +7,10 @@ node {
     // git url: 'https://github.com/saucelabs-sample-test-frameworks/Java-TestNG-Selenium.git'
 
     stage 'Compile'
+        sh "export MAVEN_HOME=/opt/maven"
+        sh "export PATH=$PATH:$MAVEN_HOME/bin"
+        sh "mvn --version"
+        sh "mvn clean package"
         sh "mvn compile"
         stage 'Test'
         sauce('saucelabs') {
